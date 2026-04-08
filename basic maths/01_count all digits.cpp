@@ -8,7 +8,8 @@
 // Output: 4
 // Explanation: The number 7789 has 4 digits.  
 
-#include <iostream>
+#include<bits/stdc++.h>
+
 using namespace std;
 
 int main() {
@@ -24,7 +25,17 @@ int main() {
     cout << digits;
     return 0;
 }
-
+//this takes 1 loop i.e O(n)
 
 //N%10 returns last digit
 //N/10 (int) removes the one's digit from number every time
+
+
+//more Optimal solution in O(1)
+ int main(){
+    int n;
+    cin>>n;
+
+    int digits = (int) (log10(n)+1);
+    cout<<digits;
+ }
