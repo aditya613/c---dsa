@@ -13,3 +13,31 @@
 // Output: 4
 // Explanation: Here the size of the array is 4, so the range will be [1, 5]. The missing number between 1 to 5 is 4
 
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int missingNumber(int arr1[], int n){
+
+    //M-1
+    // sort(arr1, arr1+n);
+    // int i=0;
+    // while(i<n-1){
+    //     if(arr1[i] != (arr1[i+1]-1)){
+    //         return arr1[i]+1;
+    //     }
+    //     i++;
+
+    // }
+
+
+    
+}
+
+int main(){
+
+    int arr[] = {1,2,3,5};
+    cout<< missingNumber(arr, (sizeof(arr)/sizeof(arr[0])));
+
+}
