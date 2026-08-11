@@ -5,7 +5,6 @@ items = {10, 20, 30, 20, 40, 10}
 for item in items:
     print(item)
     
-# Add an element
 items.add(50)
 print("After Adding 50:", items)
 

@@ -13,8 +13,8 @@ def stack_delete_last(list_stack):
 students = ["Aditya", "Arpit", "Daksh", "Aryan"]
 
 stack_store(students, "abcD")
-for i in students:
-    print(i)
+
+print(stack_retrieve(students))
 
 
 
