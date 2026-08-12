@@ -1,12 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-
 int main()
 {
     int first;
     int second;
-
     cout << "Enter First Integer : ";
     cin >> first;
 
@@ -20,9 +17,7 @@ int main()
     else
     {
         float result = (float)first / second;
-
         cout << "Division Result : " << result << endl;
     }
-
     return 0;
 }
