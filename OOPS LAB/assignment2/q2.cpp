@@ -19,9 +19,47 @@ class student{
     }
 
     int negativeNums(){
-        int 
+        int temp = 0;
+        for(auto i:nums){
+            if(i<0){
+                temp++;
+            }
+        }
+        return temp; 
     }
-}
+
+    int numZeros(){
+        int temp = 0;
+        for(auto i:nums){
+            if(i==0){
+                temp++;
+            }
+        }
+        return temp;
+    }
+
+    int sumPositiveNums(){
+         int temp = 0;
+        for(auto i:nums){
+            if(i>0){
+                temp+=i;
+            }
+        }
+        return temp;
+    }
+
+
+    int sumNegativeNums(){
+        int temp = 0;
+        for(auto i:nums){
+            if(i<0){
+                temp+=i;
+            }
+        }
+        return temp; 
+    }
+
+};
 int main(){
 
     int N;
@@ -35,6 +73,15 @@ int main(){
         cin>>temp;
         s1.insertNum(temp);
     }
+
+    cout<<"Number of positive numbers: "<<s1.positiveNums()<<endl;
+    cout<<"Number of negative numbers: "<<s1.negativeNums()<<endl;
+
+    cout<<"Number of Zeros: "<<s1.numZeros()<<endl;
+
+    cout<<"Sum of positive numbers: "<<s1.sumPositiveNums()<<endl;
+    cout<<"Sum of negative numbers: "<<s1.sumNegativeNums()<<endl;
+
 
 
 }
