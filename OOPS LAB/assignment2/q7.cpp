@@ -7,7 +7,6 @@ bool is_prime(int n){
             return false;
         }
     }
-
     return true;
 }
 int main(){
@@ -24,14 +23,10 @@ int main(){
             i++;
             continue;
         }
-
         if(primes.size()==5){
             break;
         }
-
-        
     }
-
     for(auto i:primes){
         cout<<i<<endl;
     }

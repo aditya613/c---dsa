@@ -8,6 +8,7 @@ class student{
         if(marks>=90){
             return "A+";
         }
+        
         else if(marks>=80){
             return "A";
         }
