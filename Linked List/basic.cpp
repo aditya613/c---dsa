@@ -4,6 +4,7 @@ using namespace std;
 struct Node {
     int data;
     Node* next;
+
 };
 
 void insertAtBeginning(Node*& head, int value) {
@@ -15,6 +16,7 @@ void insertAtBeginning(Node*& head, int value) {
     head = newHead;
 }
 
+
 void deleteHeadNode(Node*& head) {
     if (head == nullptr)
         return;
@@ -24,6 +26,8 @@ void deleteHeadNode(Node*& head) {
 
     delete temp;
 }
+
+
 
 void deleteTailNode(Node*& head){
 
