@@ -1,21 +1,4 @@
-"""
-====================================================================================================
-DSML COLLEGE LAB PROGRAMS - MASTER SUITE & EXECUTION RUNNER
-====================================================================================================
-This master script allows you to inspect and execute all 7 Data Science & Machine Learning (DSML)
-college laboratory programs directly from a single entry point.
-
-Lab Catalog:
-  [1] LAB 1: Python Scientific Libraries (NumPy, Pandas, Matplotlib, Sklearn) & Core Data Structures
-  [2] LAB 2: Data Preprocessing, Imputation & Leak-Free Pipelines (Kaggle Titanic Dataset)
-  [3] LAB 3: Feature Scaling Methods & Distribution Analysis (Kaggle Insurance Dataset)
-  [4] LAB 4: Simple Linear Regression (OLS Closed-Form, Gradient Descent & Sklearn on Kaggle Salary)
-  [5] LAB 5: Multilayer Perceptron (MLP) for Binary XOR Classification (NumPy & PyTorch)
-  [6] LAB 6: PyTorch Fundamentals & Collaborative Filtering Recommender (Kaggle MovieLens Dataset)
-  [7] LAB 7: Linear Regression vs. Logistic Regression Comparison (Kaggle Wine Quality Dataset)
-====================================================================================================
-"""
-
+# DSML COLLEGE LAB MASTER RUNNER
 import os
 import sys
 import subprocess
@@ -23,96 +6,51 @@ import subprocess
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 LAB_REGISTRY = {
-    1: {
-        "title": "LAB 1: Scientific Libraries & Fundamental Data Structures",
-        "script": os.path.join(BASE_DIR, "LAB-1", "lab1_python_libraries_data_structures.py"),
-        "cwd": os.path.join(BASE_DIR, "LAB-1")
-    },
-    2: {
-        "title": "LAB 2: Data Preprocessing, Missing Data Imputation & Pipelines (Titanic)",
-        "script": os.path.join(BASE_DIR, "LAB-2", "lab2_data_preprocessing_pipeline.py"),
-        "cwd": os.path.join(BASE_DIR, "LAB-2")
-    },
-    3: {
-        "title": "LAB 3: Feature Scaling Techniques & Distribution Effects (Medical Insurance)",
-        "script": os.path.join(BASE_DIR, "LAB-3", "lab3_feature_scaling_analysis.py"),
-        "cwd": os.path.join(BASE_DIR, "LAB-3")
-    },
-    4: {
-        "title": "LAB 4: Simple Linear Regression (Analytical OLS, Gradient Descent & Sklearn)",
-        "script": os.path.join(BASE_DIR, "LAB-4", "lab4_linear_regression.py"),
-        "cwd": os.path.join(BASE_DIR, "LAB-4")
-    },
-    5: {
-        "title": "LAB 5: Multilayer Perceptron (MLP) for Non-Linear XOR Classification",
-        "script": os.path.join(BASE_DIR, "LAB-5", "lab5_mlp_xor.py"),
-        "cwd": os.path.join(BASE_DIR, "LAB-5")
-    },
-    6: {
-        "title": "LAB 6: PyTorch Collaborative Filtering Recommendation Engine (MovieLens)",
-        "script": os.path.join(BASE_DIR, "LAB-6", "lab6_pytorch_recommendation_system.py"),
-        "cwd": os.path.join(BASE_DIR, "LAB-6")
-    },
-    7: {
-        "title": "LAB 7: Linear Regression vs. Logistic Regression (Kaggle Wine Quality)",
-        "script": os.path.join(BASE_DIR, "LAB-7", "lab7_linear_vs_logistic_regression.py"),
-        "cwd": os.path.join(BASE_DIR, "LAB-7")
-    }
+    1: ("LAB 1: Python Libraries & Basic Data Structures", os.path.join(BASE_DIR, "LAB-1", "lab1.py")),
+    2: ("LAB 2: Data Preprocessing & Imputation (Titanic)", os.path.join(BASE_DIR, "LAB-2", "lab2.py")),
+    3: ("LAB 3: Feature Scaling (Insurance Dataset)", os.path.join(BASE_DIR, "LAB-3", "lab3.py")),
+    4: ("LAB 4: Simple Linear Regression (Salary Prediction)", os.path.join(BASE_DIR, "LAB-4", "lab4.py")),
+    5: ("LAB 5: Multilayer Perceptron (MLP) for XOR Function", os.path.join(BASE_DIR, "LAB-5", "lab5.py")),
+    6: ("LAB 6: PyTorch Recommendation System (MovieLens)", os.path.join(BASE_DIR, "LAB-6", "lab6.py")),
+    7: ("LAB 7: Linear vs. Logistic Regression (Wine Quality)", os.path.join(BASE_DIR, "LAB-7", "lab7.py")),
+    8: ("LAB 8: Logistic Regression (Admission Chance)", os.path.join(BASE_DIR, "LAB-8", "lab8.py")),
+    9: ("LAB 9: K-Nearest Neighbors (KNN) Classification (Iris)", os.path.join(BASE_DIR, "LAB-9", "lab9.py")),
+    10: ("LAB 10: Support Vector Machine (SVM) with Kernels", os.path.join(BASE_DIR, "LAB-10", "lab10.py")),
 }
 
-def run_lab(lab_number):
-    if lab_number not in LAB_REGISTRY:
-        print(f"Error: Lab {lab_number} is not valid. Choose 1 to 7.")
+def run_lab(num):
+    if num not in LAB_REGISTRY:
+        print(f"Invalid lab number: {num}")
         return
-    
-    lab = LAB_REGISTRY[lab_number]
-    print("\n" + "#" * 85)
-    print(f"LAUNCHING: {lab['title']}")
-    print(f"Target Script: {lab['script']}")
-    print("#" * 85 + "\n")
-    
-    cmd = [sys.executable, lab["script"]]
-    result = subprocess.run(cmd, cwd=lab["cwd"])
-    if result.returncode == 0:
-        print(f"\n[+] {lab['title']} completed successfully.")
-    else:
-        print(f"\n[-] Execution ended with code: {result.returncode}")
+    title, path = LAB_REGISTRY[num]
+    print("\n" + "=" * 60)
+    print(f"RUNNING: {title}")
+    print("=" * 60)
+    subprocess.run([sys.executable, path], cwd=os.path.dirname(path))
 
 def main():
     if len(sys.argv) > 1:
-        try:
-            choice = int(sys.argv[1])
-            run_lab(choice)
-            return
-        except ValueError:
-            print("Please supply a valid integer lab number (1 to 7).")
-            return
+        run_lab(int(sys.argv[1]))
+        return
 
-    print("=" * 85)
-    print("DSML COLLEGE LAB MASTER SUITE")
-    print("=" * 85)
-    for num, meta in LAB_REGISTRY.items():
-        print(f"  [{num}] {meta['title']}")
-    print("  [8] Run ALL Labs sequentially")
-    print("  [0] Exit")
-    print("=" * 85)
-    
+    print("=" * 60)
+    print("DSML LAB PROGRAMS MASTER LAUNCHER")
+    print("=" * 60)
+    for num, (title, _) in LAB_REGISTRY.items():
+        print(f"  [{num:2d}] {title}")
+    print("  [11] Run ALL Labs via ALL_LABS_SINGLE_FILE.py")
+    print("  [ 0] Exit")
+    print("=" * 60)
+
     try:
-        selection = input("\nEnter Lab Number to execute (0-8): ").strip()
-        if not selection:
-            return
-        choice = int(selection)
-        if choice == 0:
-            print("Exiting.")
-        elif choice in LAB_REGISTRY:
+        choice = int(input("\nEnter Lab Number (0-11): ").strip())
+        if choice in LAB_REGISTRY:
             run_lab(choice)
-        elif choice == 8:
-            for num in range(1, 8):
-                run_lab(num)
-        else:
-            print("Invalid choice.")
+        elif choice == 11:
+            single_suite = os.path.join(BASE_DIR, "ALL_LABS_SINGLE_FILE.py")
+            subprocess.run([sys.executable, single_suite], cwd=BASE_DIR)
     except (ValueError, KeyboardInterrupt):
-        print("\nSession terminated.")
+        pass
 
 if __name__ == "__main__":
     main()

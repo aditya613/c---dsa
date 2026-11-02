@@ -1,20 +1,29 @@
+# Simulate Stack (LIFO) using Python list
 
-def stack_retrieve(list_stack):
-    return list_stack[-1]
+def stack_push(stack, item):
+    stack.append(item)
 
-def stack_store(list_stack, element):
-    list_stack.insert(-1, element)
+def stack_pop(stack):
+    if len(stack) == 0:
+        return "Underflow! Stack is empty"
+    return stack.pop()
 
+def stack_peek(stack):
+    if len(stack) == 0:
+        return "Stack is empty"
+    return stack[-1]
 
-def stack_delete_last(list_stack):
-    return list_stack.pop()
+# Demonstration
+stack = ["Aditya", "Arpit", "Daksh", "Aryan"]
+print("Initial Stack:", stack)
 
+# Push
+stack_push(stack, "Rohan")
+print("After Push 'Rohan':", stack)
 
-students = ["Aditya", "Arpit", "Daksh", "Aryan"]
+# Peek
+print("Top element (Peek):", stack_peek(stack))
 
-stack_store(students, "abcD")
-
-print(stack_retrieve(students))
-
-
-
+# Pop
+print("Popped element:", stack_pop(stack))
+print("Stack after Pop:", stack)
